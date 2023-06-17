@@ -28,20 +28,22 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | Board count | Board | Core count | RAM in gibi | Disk in gibi | Installed | Runner ready |
 |------------:|-------|-----------:|------------:|-------------:|-----------|--------------|
 | 2           | Lichee Pi 4a|    4 |            8|           96 |        2/2|          2/2 |
-| 1           | VisionFive 2|    4 |            8|              |        0/1|          0/1 |
+| 1           | VisionFive 2|    4 |            8|              |        1/1|          1/1 |
 | 1           | VisionFive 1|    2 |            8|              |        0/1|          0/1 |
 | 2           | BeagleV     |    1 |            8|              |        0/2|          0/2 |
-| 8           | Mango MQ    |    1 |            1|              |        0/8|          0/8 |
+| 8           | Mango MQ    |    1 |            1|              |        3/8|          3/8 |
 | 2           | Lichee RV Dock|  1 |            1|              |        0/2|          0/2 |
 | 1           | Nezha         |  1 |            1|              |        0/1|          0/1 |
 | Totals      |       |            |             |              |           |              |
-| 17          | 7     |         27 |           51|              |       2/17|         2/17 |
+| 17          | 7     |         27 |           51|              |       6/17|         6/17 |
 
 ## Distributions report
 
 | Board | Bare metal distro | Kernel version | Notes |
 |-------|-------------------|---------------:|-------|
 | Lichee Pi 4a | revyos sid | 5.10.113-g7b352f5ac2ba | Has GUI, use ansible to remove packages and configure storage: Can't boot from SD and flash is only 8G. |
+| VisionFive2 | [Armbian 23.8 Lunar](https://www.armbian.com/visionfive2/) | 5.15.0-starfive | Serial console needed. |
+| MangoPi | Armbian 22.08 Jammy | 5.19.0-rc1-d1 | Serial console needed. Net via wifi. |
 
 ## Official Status
 
