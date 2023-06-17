@@ -1,0 +1,49 @@
+# Costa Rica RISC-V Lab
+
+Welcome to the Costa Rica RISC-V Lab.
+
+This RISC-V Lab provides access to riscv64 hardware for compiling and testing of software, via methods like GitHub runners and others if requested.
+
+If you need access, please fill an Issue with the following information:
+- Email contact information
+- URL for the project you represent
+- Any particular requirements such as distro versions, access method (GitHub runner, GitLab runner, Jenkins, etc)
+
+## Current projects
+
+This are some of the projects who currently have access to the Costa Rica RISC-V Lab's resources.
+
+| Project | Description | Hosts in use | Active |
+|---------|-------------|--------------|--------|
+| [Mariner](https://github.com/fede2cr/CBL-Mariner) | Azure Linux unofficial port for riscv64| lichee01-08ram64sd, lichee02-08ram32sd |✅|
+| [Slackware](https://github.com/fede2cr/slackware_riscv) | Slackware Linux official port for riscv64 | lichee01-08ram64sd, lichee02-08ram32sd |✅|
+| [Python whl](https://github.com/fede2cr/riscv64-python-whl) | Release of python modules as riscv64 whl binaries | lichee01-08ram64sd, lichee02-08ram32sd |✅|
+| Eclipse Adoptium | OpenJDK binaries for riscv64 | vf2-01 | Setup phase |
+
+## Inventory
+
+| Board count | Board | Core count | RAM in gibi | Disk in gibi | Installed | Runner ready |
+|------------:|-------|-----------:|------------:|-------------:|-----------|--------------|
+| 2           | Lichee Pi 4a|    4 |            8|           96 |        2/2|          2/2 |
+| 1           | VisionFive 2|    4 |            8|              |        0/1|          0/1 |
+| 1           | VisionFive 1|    2 |            8|              |        0/1|          0/1 |
+| 2           | BeagleV     |    1 |            8|              |        0/2|          0/2 |
+| 8           | Mango MQ    |    1 |            1|              |        0/8|          0/8 |
+| 2           | Lichee RV Dock|  1 |            1|              |        0/2|          0/2 |
+| 1           | Nezha         |  1 |            1|              |        0/1|          0/1 |
+| Totals      |       |            |             |              |           |              |
+| 17          | 7     |         27 |           51|              |       2/17|         2/17 |
+
+## Distributions report
+
+| Board | Bare metal distro | Kernel version | Notes |
+|-------|-------------------|---------------:|-------|
+| Lichee Pi 4a | revyos sid | 5.10.113-g7b352f5ac2ba | Has GUI, use ansible to remove packages and configure storage: Can't boot from SD and flash is only 8G. |
+
+## Official Status
+
+The lab is undergoing review by the RISC-V Labs working group, and currently does not have an official RISC-V Lab status.
+
+## Location
+
+The Costa Rica RISC-V Lab is located inside a beautiful dry forest in Esparza, Puntarenas; preserved by 5 generations and surounded by [nature](https://www.inaturalist.org/projects/biodiversidad-en-esparza).
