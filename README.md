@@ -4,6 +4,9 @@ Welcome to the Costa Rica RISC-V Lab.
 
 This RISC-V Lab provides access to riscv64 hardware for compiling and testing of software, via methods like GitHub runners and others if requested.
 
+![Costa Rica RISC-V Lab][docs/img/logo.png]
+
+
 If you need access, please fill an Issue with the following information:
 - Email contact information
 - URL for the project you represent
