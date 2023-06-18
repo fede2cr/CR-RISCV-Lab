@@ -1,0 +1,114 @@
+---
+- hosts: all
+#- hosts: licheepi4a
+  tasks:
+    - name: Change default target to multi-user.target
+      file:
+        src: /usr/lib/systemd/system/multi-user.target
+        dest: /etc/systemd/system/default.target
+        state: link
+      become: yes
+    - name: Updates packages
+      apt:
+        update_cache: yes
+      become: yes
+    - name: Upgrades packages
+      apt:
+        upgrade: dist
+      become: yes
+    - name: Removes packages
+      apt:
+        pkg:
+          - mariadb*
+          - libqt*
+          - desktop-base
+          - libreoffice-*
+          - default-jre*
+          - samba-libs
+          - dosfstools
+          - gimp*
+          - xserver-*
+          - libgarcon-*
+          - xfce4-*
+          - x11-*
+          - network-manager-gnome
+          - firefox
+          - desktop-file-utils
+          - glmark2-*
+          - modemmanager
+          - lightdm
+        state: absent
+      become: yes
+    - name: Remove dependencies that are no longer required
+      ansible.builtin.apt:
+        autoremove: yes
+      become: yes
+    - name: Installs packages
+      apt:
+        pkg:
+          - curl
+          - debootstrap
+          - docker.io
+          - golang
+          - nodejs
+          - strace
+          - python3-pip
+          - python3-setuptools
+          - python3-wheel
+          - python3.11-venv
+          - libopenblas0
+          - libopenblas-dev
+          - gfortran
+          - ccache
+          - screen
+          - cmake
+          - libssl-dev
+        state: latest
+      become: yes
+    - name: Run the equivalent of "apt-get clean" as a separate step
+      apt:
+        clean: yes
+      become: yes
+    - name: Download Installer
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: '0755'
+        force: 'yes'
+    - name: install rust/cargo
+      shell: /tmp/sh.rustup.rs -y
+    - name: Downloads runner
+      get_url:
+        url: https://github.com/ChristopherHX/github-act-runner/releases/download/v0.6.2/binary-linux-riscv64.tar.gz
+        dest: /tmp/runner-binary-linux-riscv64.tar.gz
+        mode: '0444'
+    - name: Mkdir /mnt/runner
+      ansible.builtin.file:
+        path: /mnt/runner
+        state: directory
+        mode: '0755'
+      become: yes
+    - name: Extracts runner into /mnt
+      ansible.builtin.unarchive:
+        src: /tmp/runner-binary-linux-riscv64.tar.gz
+        dest: /mnt/runner
+        remote_src: yes
+      become: yes
+    - name: Prints instructions for runner config
+      debug:
+        msg: |
+          "Setup runner manually, by doing:"
+          "cd /mnt/runner/"
+          "./github-act-runner new --url <url> --name <runner-name> --labels <labels> --token <runner-registration-token>"
+          ""
+          "Also start the runner manually using screen and running ./run.sh"
+    - name: Configures docker without iptables and with /mnt as data dir
+      copy:
+        dest: "/etc/docker/daemon.json"
+        content: |
+          {
+            "iptables": false
+            "data-root": "/mnt/docker"
+          }
+      become: yes
+
