@@ -31,11 +31,11 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | 1           | VisionFive 2|    4 |            8|           64 |        1/1|          1/1 |
 | 1           | VisionFive 1|    2 |            8|              |        0/1|          0/1 |
 | 2           | BeagleV     |    1 |            8|              |        0/2|          0/2 |
-| 8           | Mango MQ    |    1 |            1|          160 |        3/8|          3/8 |
+| 8           | Mango MQ    |    1 |            1|          224 |        4/8|          4/8 |
 | 2           | Lichee RV Dock|  1 |            1|              |        0/2|          0/2 |
-| 1           | Nezha         |  1 |            1|           64 |        0/1|          0/1 |
+| 1           | Nezha         |  1 |            1|           64 |        1/1|          1/1 |
 | Totals      |       |            |             |              |           |              |
-| 17          | 7     |         27 |           51|          384 |       6/17|         6/17 |
+| 17          | 7     |         27 |           51|          384 |       8/17|         8/17 |
 
 ## Distributions report
 
