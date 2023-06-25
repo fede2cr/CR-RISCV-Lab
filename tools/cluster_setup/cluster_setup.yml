@@ -63,6 +63,7 @@
           - screen
           - cmake
           - libssl-dev
+          - ninja-build
         state: latest
       become: yes
     - name: Run the equivalent of "apt-get clean" as a separate step
@@ -107,7 +108,7 @@
         dest: "/etc/docker/daemon.json"
         content: |
           {
-            "iptables": false
+            "iptables": false,
             "data-root": "/mnt/docker"
           }
       become: yes
