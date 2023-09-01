@@ -34,10 +34,11 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | 8           | Mango MQ    |    1 |            1|          224 |        4/8|          4/8 |
 | 2           | Lichee RV Dock|  1 |            1|              |        0/2|          0/2 |
 | 1           | Nezha         |  1 |            1|           64 |        1/1|          1/1 |
-| 1           | PineTab-V         |  4 |            4|           64 |        0/1|          0/1 |
-| 1           | MilkV Pioneer*         |  64 |            128 |           NA |        0/1|          0/1 |
-| Totals      |       |            |             |              |           |              |
-| 19          | 9     |         95 |           183 |          576 |       8/18|         8/18 |
+| 1           | PineTab-V      |  4 |           4 |           64 |        0/1|          0/1 |
+| 1           | MilkV Pioneer* | 64 |         128 |           NA |        0/1|          0/1 |
+| 1           | MilkV Mars*    |  4 |           8 |           NA |        0/1|          0/1 |
+| Totals      |        |            |             |              |           |              |
+| 20          | 10     |         99 |         191 |          576 |       8/20|         8/20 |
 
 ## Distributions report
 
@@ -48,10 +49,11 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | MangoPi | Armbian 22.08 Jammy | 5.19.0-rc1-d1 | Serial console needed. Net via wifi. No nodejs. |
 | PineTab-V | star64-image-plasma | 5.15.107 | Cannot be assigned for projects, only for quick testing. | 
 | Pioneer* | NA | NA | Available in ~Jan-2024. 8-core and 16-core containers available. |
+| Mars* | NA| NA| Available in Sept-2023. |
 
 ## Official Status
 
-The lab is undergoing review by the RISC-V Labs working group, and currently does not have an official RISC-V Lab status.
+The lab is undergoing submit/review by the RISC-V Labs working group, and currently does not have an official RISC-V Lab status.
 
 ## Location
 
