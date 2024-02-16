@@ -1,0 +1,71 @@
+---
+- hosts: all
+  tasks:
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/zerotier/ZeroTierOne.git'
+        dest: /tmp/zerotier
+    - name: Updates packages
+      apt:
+        update_cache: yes
+      become: yes
+    - name: Upgrades packages
+      apt:
+        upgrade: dist
+      become: yes
+    - name: Remove dependencies that are no longer required
+      ansible.builtin.apt:
+        autoremove: yes
+      become: yes
+    - name: Installs packages
+      apt:
+        pkg:
+          - git
+          - debhelper
+        state: latest
+      become: yes
+    - name: Run the equivalent of "apt-get clean" as a separate step
+      apt:
+        clean: yes
+      become: yes
+    - name: Compile zerotier
+      make:
+        chdir: /tmp/zerotier
+        jobs: '{{ cpus }}'
+    - name: Build Zerotier test suite
+      make:
+        chdir: /tmp/zerotier
+        jobs: '{{ cpus }}'
+        target: selftest
+    - name: Runs zerotier tests
+      ansible.builtin.shell: /tmp/zerotier/zerotier-selftest
+      args:
+        chdir: /tmp/zerotier
+      register: result
+    - name: Print test results
+      ansible.builtin.debug:
+        var: result
+    - name: Copy zerotier daemon
+      ansible.builtin.copy:
+        src: /tmp/zerotier/zerotier-one
+        dest: /usr/sbin/zerotier-one
+        owner: root
+        group: root
+        mode: '0755'
+        remote_src: yes
+      become: yes
+    - name: Copy zerotier systemd service
+      ansible.builtin.copy:
+        src: /tmp/zerotier/debian/zerotier-one.service
+        dest: /etc/systemd/system
+        owner: root
+        group: root
+        mode: '0644'
+        remote_src: yes
+      become: yes
+    - name: Enable zerotier service
+      ansible.builtin.systemd_service:
+        name: zerotier-one.service
+        state: started
+        enabled: true
+      become: yes
