@@ -63,3 +63,11 @@ The Costa Rica RISC-V Lab is located inside a beautiful dry forest in Esparza, P
 
 In tools/cluster_setup you can find ansible recipes for installing basic packages as well as github local runner.
 In [cpyzabbix](https://github.com/fede2cr/cpyzabbix) you can find a library ported from Python to CircuitPython to graph the availability and load of the monitored nodes, by grabbing the information from the Zabbix monitoring.
+
+## Monitoring system
+
+The software Zabbix is being used as a monitoring platform, as it has agents ready available for riscv64, and has an API that allows to be monitored by an ESP32-C3 (riscv32 running circuitpython 8). It has a power distribution monitoring with less than 20% of it's nominal node and it also includes an indoor and outdoor weather station for monitoring CO2, Relative Humidity and Temperature of the data center that holds the boards.
+
+## Obsolete hardware
+
+Since the arrival of the MilkV Pioneer, the core count has increased enough that several boards which are rare and have slow cores are going to be phased out. They can still be made available if there are specific needs for a project, such as distribution image testing.
