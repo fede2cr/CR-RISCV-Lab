@@ -6,11 +6,10 @@ This RISC-V Lab provides access to riscv64 hardware for compiling and testing of
 
 ![Costa Rica RISC-V Lab](docs/img/logo-med.png)
 
-
 If you need access, please fill an Issue with the following information:
 - Email contact information
 - URL for the project you represent
-- Any particular requirements such as distro versions, access method (GitHub runner, GitLab runner, Jenkins, etc)
+- Any particular requirements such as distro versions, access method (GitHub runner, GitLab runner, Azure DevOps, Jenkins, etc)
 
 ## Current projects
 
@@ -18,9 +17,10 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 
 | Project | Description | Hosts in use | Active |
 |---------|-------------|--------------|--------|
-| [Mariner](https://github.com/fede2cr/CBL-Mariner) | Azure Linux unofficial port for riscv64| lichee01-08ram64sd |✅|
-| [Slackware](https://github.com/fede2cr/slackware_riscv) | Slackware Linux official port for riscv64 | lichee01-08ram64sd |✅|
-| [Python whl](https://github.com/fede2cr/riscv64-python-whl) | Release of python modules as riscv64 whl binaries | lichee01-08ram64sd, lichee02-08ram32sd |✅|
+| CR-RISCV-Lab Monitoring | It uses zabbix to monitor this lab. | lichee01-08ram64sd |✅|
+| [Mariner](https://github.com/fede2cr/CBL-Mariner) | Azure Linux unofficial port for riscv64| pioneer01-128ram-1024nvme |✅|
+| [Slackware](https://github.com/fede2cr/slackware_riscv) | Slackware Linux official port for riscv64 | pioneer01-128ram-1024nvme |✅|
+| [Python whl](https://github.com/fede2cr/riscv64-python-whl) | Release of python modules as riscv64 whl binaries | pioneer01-128ram-1024nvme |✅|
 | Eclipse Adoptium | OpenJDK binaries for riscv64 | lichee02-08ram32sd | ✅ |
 
 ## Inventory
@@ -34,11 +34,11 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | 8           | Mango MQ    |    1 |            1|          224 |        4/8|          4/8 |
 | 2           | Lichee RV Dock|  1 |            1|              |        0/2|          0/2 |
 | 1           | Nezha         |  1 |            1|           64 |        1/1|          1/1 |
-| 1           | PineTab-V      |  4 |           4 |           64 |        0/1|          0/1 |
-| 1           | MilkV Pioneer | 64 |         128 |           NA |        0/1|          0/1 |
+| 1           | PineTab-V     |  4 |           4 |           64 |        0/1|          0/1 |
+| 1           | MilkV Pioneer | 64 |         128 |         1024 |        1/1|          1/1 |
 | 1           | MilkV Mars    |  4 |           8 |           NA |        0/1|          0/1 |
-| Totals      |        |            |             |              |           |              |
-| 20          | 10     |         99 |         191 |          576 |       8/20|         8/20 |
+| Totals      |        |           |             |              |           |              |
+| 20          | 10     |        99 |         191 |         1600 |       9/20|         9/20 |
 
 ## Distributions report
 
@@ -48,7 +48,7 @@ This are some of the projects who currently have access to the Costa Rica RISC-V
 | VisionFive2 | [Armbian 23.8 Lunar](https://www.armbian.com/visionfive2/) | 5.15.0-starfive | Serial console needed. |
 | MangoPi | Armbian 22.08 Jammy | 5.19.0-rc1-d1 | Serial console needed. Net via wifi. No nodejs. |
 | PineTab-V | star64-image-plasma | 5.15.107 | Cannot be assigned for projects, only for quick testing. | 
-| Pioneer | NA | NA | Setup in progress. |
+| Pioneer | Fedora 38 | 6.1.31 | |
 | Mars | NA| NA| Setup in progress. |
 
 ## Official Status
@@ -58,3 +58,8 @@ The lab is undergoing submit/review by the RISC-V Labs working group, and curren
 ## Location
 
 The Costa Rica RISC-V Lab is located inside a beautiful dry forest in Esparza, Puntarenas; preserved by 5 generations and surounded by [nature](https://www.inaturalist.org/projects/biodiversidad-en-esparza).
+
+## Software and utils
+
+In tools/cluster_setup you can find ansible recipes for installing basic packages as well as github local runner.
+In [cpyzabbix](https://github.com/fede2cr/cpyzabbix) you can find a library ported from Python to CircuitPython to graph the availability and load of the monitored nodes, by grabbing the information from the Zabbix monitoring.
